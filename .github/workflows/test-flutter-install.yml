@@ -19,7 +19,7 @@ jobs:
     - name: 'Run a one-line script'
       run: echo Hello, world!
 
-    - name: 'Run dev-setup.ps1'
+    - name: 'Run flutter-setup.ps1'
       run: |
-        echo Starting dev-setup.ps1 PowerShell script.
-        powershell .\dev-setup.ps1 C:\src\
+        echo Starting flutter-setup.ps1 PowerShell script.
+        powershell .\flutter-setup.ps1 C:\src\
