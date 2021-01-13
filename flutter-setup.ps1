@@ -30,6 +30,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force;
 #Choco installation
 #if(-not($ifChocoInstalled)){
 #    Write-host "Chocolatey is not installed, installing now " 
+    Write-host "Installing Chocolatey"
     Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1') )
  
     Update-Environment-Path
@@ -47,6 +48,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force;
  
 #if(-not($ifGITInstalled)){
 #    Write-host "GIT is not installed, installing now " 
+    Write-host "Installing Git for Windows"
     echo A | choco install git --yes
   #  choco install gitextensions
      
@@ -58,27 +60,32 @@ Set-ExecutionPolicy Bypass -Scope Process -Force;
  
 
 #7-zip 
-choco install 7zip.portable
+Write-host "Installing 7-Zip command line tool"
+echo A | choco install 7zip.portable
 Update-Environment-Path
 
 #Notepad++ 
+Write-host "Installing Notepad++"
 echo A | choco install notepadplusplus.install
 Update-Environment-Path
  
 #Flutter, Chrome and Android Studio
-echo A | choco install android-sdk
+Write-host "Installing Chrome, Flutter and Android Studio"
+#echo A | choco install android-sdk
+#Update-Environment-Path
+echo A | choco install googlechrome
 Update-Environment-Path
 echo A | choco install flutter
-Update-Environment-Path
-echo A | choco install googlechrome
 Update-Environment-Path
 echo A | choco install androidstudio
 Update-Environment-Path
 
 #ADB
+Write-host "Installing ADB"
 echo A | choco install adb
 
 #VSCode
+Write-host "Installing VSCode"
 echo A | choco install vscode
 
 #Accept Android SDK Licences
@@ -95,6 +102,7 @@ Invoke-Expression("echo y | $dir\sdkmanager.bat --licenses")
 Update-Environment-Path
 
 #setup Flutter
+Write-host "Setting up Flutter"
 flutter channel beta
 flutter upgrade
 flutter config --enable-web
