@@ -1,6 +1,6 @@
 [String] $customPath = $args[0]
 
-Write-Warning  "Windows Development Machine Set-up Script for Android/Flutter" 
+Write-Host  "Windows Development Machine Set-up Script for Android/Flutter" 
 
 #Execution Policy check
 $outStr = (get-ExecutionPolicy) | Out-String
@@ -85,8 +85,14 @@ echo A | choco install vscode
 Write-host "Accepting Android Licences"
 #Convert $dir to its short name equivalent
 $dir=(New-Object -com scripting.filesystemobject).getFolder("$env:ANDROID_SDK_ROOT\tools\bin").ShortPath
+Invoke-Expression("echo y | $dir\sdkmanager.bat --install 'platform-tools'")
+Invoke-Expression("echo y | $dir\sdkmanager.bat --install 'platforms;android-28'")
+Invoke-Expression("echo y | $dir\sdkmanager.bat --install 'platforms;android-29'")
+Invoke-Expression("echo y | $dir\sdkmanager.bat --install 'platforms;android-30'")
+Update-Environment-Path
 Invoke-Expression("echo y | $dir\sdkmanager.bat --licenses")
 # Invoke-Expression("$dir\sdkmanager.bat --licenses")
+Update-Environment-Path
 
 #setup Flutter
 flutter channel beta
