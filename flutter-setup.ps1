@@ -17,10 +17,10 @@ Write-Host $outStr  -ForegroundColor White  -BackgroundColor Blue
 #function to update system path after installation 
 function Update-Environment-Path
 {
-    Write-Host "Path before = $env:Path"
+#     Write-Host "Path before = $env:Path"
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") `
         + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-    Write-Host "Path after = $env:Path"  -ForegroundColor White  -BackgroundColor Blue
+#     Write-Host "Path after = $env:Path"  -ForegroundColor White  -BackgroundColor Blue
 }
  
 Set-ExecutionPolicy Bypass -Scope Process -Force;
